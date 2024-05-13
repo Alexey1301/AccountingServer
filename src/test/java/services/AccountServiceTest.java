@@ -27,17 +27,14 @@ public class AccountServiceTest {
 
     @Test
     public void testSave() {
-        // Arrange
         Account accountToSave = new Account();
         accountToSave.setType("Type");
         accountToSave.setCurrency("USD");
         accountToSave.setBalance(1000.0);
         accountToSave.setStatus("Active");
 
-        // Act
         accountService.save(accountToSave);
 
-        // Assert
         verify(accountRepository, times(1)).save(accountToSave);
         assertEquals("Type", accountToSave.getType());
         assertEquals("USD", accountToSave.getCurrency());
@@ -47,19 +44,16 @@ public class AccountServiceTest {
 
     @Test
     public void testUpdate() {
-        // Arrange
         int accountId = 1;
         Account updatedAccount = new Account();
-        updatedAccount.setId(accountId); // Установим ID, чтобы метод update сработал корректно
+        updatedAccount.setId(accountId);
         updatedAccount.setType("Type");
         updatedAccount.setCurrency("EUR");
         updatedAccount.setBalance(2000.0);
         updatedAccount.setStatus("Inactive");
 
-        // Act
         accountService.update(accountId, updatedAccount);
 
-        // Assert
         verify(accountRepository, times(1)).save(updatedAccount);
         assertEquals(accountId, updatedAccount.getId());
         assertEquals("Type", updatedAccount.getType());
