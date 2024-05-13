@@ -38,5 +38,4 @@ public class Document {
 
     @Column(name = "sum")
     private double sum;
-
 }

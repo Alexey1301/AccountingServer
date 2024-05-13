@@ -40,6 +40,4 @@ public class DocumentController {
     private DocumentDTO convertToDocumentDto(Document document){
         return modelMapper.map(document, DocumentDTO.class);
     }
-
-
 }
